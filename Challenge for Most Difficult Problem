@@ -1,0 +1,88 @@
+Problem
+In a competition, there are three 33 problems: P, Q, RP,Q,R. Alice challenges Bob that problem RR will be the most difficult, whereas Bob predicts that problem QQ will be the most difficult.
+
+You are given three integers S_P, S_Q, S_RS 
+P
+​
+ ,S 
+Q
+​
+ ,S 
+R
+​
+ , which represent the number of successful submissions of the problems P, Q, RP,Q,R. Each problem is guaranteed to have a varied amount of submissions. Decide who will win the challenge.
+
+If Alice wins the challenge (that is, if problem RR is the most difficult), then output AliceAlice.
+
+If Bob wins the challenge (that is, if problem QQ is the most difficult), then output BobBob.
+
+If no one wins the challenge (since problem PP is the most difficult), output DrawDraw.
+
+Note: The problem with the fewest successful submissions is the most difficult.
+
+Input Format
+The first line of input contains a single integer TT, which represents the number of test cases. The following is a description of TT test cases.
+Each test case's first and only line comprises three space-separated integers S_P, S_Q, S_RS 
+, which represent the number of successful submissions of problems P, Q, RP,Q,R, respectively.
+Output Format
+For each test case, print the winner of the challenge or the word "Draw" if no one wins the challenge.
+Constraints
+1 \leq T \leq 1001≤T≤100
+1 \leq S_P,S_Q,S_R \leq 1001≤S 
+
+ ≤100
+S_P, S_Q, S_RS 
+
+  are all distinct.
+Sample 1:
+Input
+Output
+3
+1 4 2
+16 8 10
+14 15 9
+Draw
+Bob
+Alice
+Explanation:
+Test case 11: Because problem PP turns out to be the most difficult, no one wins the challenge.
+
+Test case 22: Problem QQ proves to be the most difficult, thus Bob wins the challenge.
+
+Test case 33: Problem RR proves to be the most difficult, thus Alice wins the challenge.
+
+
+
+
+
+//////////////////////////////////////
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t>0){
+		    int sp=sc.nextInt();
+		    int sq=sc.nextInt();
+		    int sr=sc.nextInt();
+		    
+		    if(sp<sq && sp<sr){
+		        System.out.println("Draw");
+		    }else if(sq<sr && sq<sp){
+		        System.out.println("Bob");
+		    }else{
+		         System.out.println("Alice");
+		    }
+		    t--;
+		}
+	}
+}
