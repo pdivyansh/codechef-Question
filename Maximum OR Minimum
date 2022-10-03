@@ -1,0 +1,94 @@
+Problem
+Alice and Bob are ready to play a new game. Both the players take alternate turns. Alice starts first.
+
+There are NN binary numbers written on a blackboard.
+
+Alice, in her turn, erases any 22 numbers from the blackboard and writes the bitwise OR of those 22 numbers on the blackboard.
+Bob, in his turn, erases any 22 numbers from the blackboard and writes the bitwise AND of those 22 numbers on the blackboard.
+Note that, after each move, the count of numbers written on the blackboard reduces by 11.
+
+Both players play until a single number remains on the blackboard. Alice wants to maximise the remaining number while Bob wants to minimise the remaining number. Find the remaining number if both the players play optimally.
+
+Input Format
+First line will contain TT, number of test cases. Then the test cases follow.
+First line of each test case contains of a single integer NN - the count of numbers written on the blackboard initially.
+Second line of each test case contains NN space-separated integers A_1, A_2, \dots A_NA  the numbers written on the blackboard.
+Output Format
+For each test case, output in a single line, the remaining number, if both the players play optimally.
+
+Constraints
+ 1≤T≤1000
+ 2≤N≤10 power5
+ 
+0 \leq A_i \leq 1   0≤Ai≤1
+Sum of NN over all test cases does not exceed 2 \cdot 10^52⋅10 
+5
+ .
+Sample 1:
+Input
+Output
+3
+5
+1 1 1 1 0
+3
+0 1 0
+4
+0 0 0 0
+1
+0
+0
+Explanation:
+Test case 11: Alice starts first.
+
+In the first move, Alice erases 11 and 00 and writes 1 | 0 = 11∣0=1 on the blackboard. Thus, after this move, the numbers written are \{1, 1, 1, 1\}{1,1,1,1}.
+In the second move, Bob erases 11 and 11 and writes 1 \& 1 = 11&1=1 on the blackboard. Thus, after this move, the numbers written are \{1, 1, 1\}{1,1,1}.
+In the third move, Alice erases 11 and 11 and writes 1 | 1 = 11∣1=1 on the blackboard. Thus, after this move, the numbers written are \{1, 1\}{1,1}.
+In the fourth move, Bob erases 11 and 11 and writes 1 \& 1 = 11&1=1 on the blackboard. Thus, after this move, the numbers written are \{1\}{1}.
+Thus, the remaining number is 11.
+
+Test case 22: It does not matter which two numbers Alice chooses. After the first move, the numbers on the blackboard would be \{1, 0\}{1,0}. Thus, Bob erases these two numbers and writes 1 \& 0= 01&0=0.
+
+Test case 33: In all the moves, both players erase two 0s0s and write a single 00. Thus, the remaining element is 00.
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int i=1;i<=t;i++){
+		    int n=sc.nextInt();
+		    int[] arr=new int[n];
+		    for(int j=0;j<n;j++){
+		        int arr_num=sc.nextInt();
+		        arr[j]=arr_num;
+		        
+		    }
+		    int count_zero=0;
+		    for(int j=0;j<n;j++){
+		        if(arr[j]==0){
+		            count_zero=count_zero+1;
+		        }
+		    }
+		    int count_one=n-count_zero;
+		    if(count_zero>count_one)
+		    System.out.println("0");
+		    else
+		    System.out.println("1");
+		}
+	}
+}
