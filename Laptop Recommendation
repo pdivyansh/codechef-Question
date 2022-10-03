@@ -1,0 +1,116 @@
+Problem
+Chef wants to buy a new laptop. However, he is confused about which laptop to buy out of 1010 different laptops. He asks his NN friends for their recommendation. The i^{th}i 
+th
+  friend recommends the Chef to buy the {A_i}^{th}A 
+
+Chef will buy the laptop which is recommended by maximum number of friends. Determine which laptop Chef buys.
+Print CONFUSED if there are multiple laptops having maximum number of recommendations.
+
+Input Format
+The first line contains a single integer TT - the number of test cases. Then the test cases follow.
+The first line of each test case contains an integer NN - the number of Chef's friends.
+The second line of each test case contains NN space-separated integers A_1, A_2, \dots, A_NA 
+
+  denotes the recommendation of the i^{th}i 
+th
+  friend.
+Output Format
+For each test case, output in a single line, the laptop which has the maximum number of recommendations. Print CONFUSED if there are multiple laptops having maximum number of recommendations.
+
+You may print each character of CONFUSED in uppercase or lowercase (for example, Confused, coNFused, CONFused will be considered identical).
+
+Constraints
+1 \leq T \leq 2001≤T≤200
+1 \leq N \leq 10001≤N≤1000
+1 \le A_i \le 10
+1≤Ai≤10
+Sample 1:
+Input
+Output
+4
+5
+4 4 4 2 1
+7
+1 2 3 4 5 6 6
+6
+2 2 3 3 10 8
+4
+7 7 8 8
+4
+6
+CONFUSED
+CONFUSED
+Explanation:
+Test case 1: Laptop 44 has the maximum number of recommendations. Therefore, Chef will buy the 4^{th}4 
+th
+  laptop.
+
+Test case 2: Laptop 66 has the maximum number of recommendations. Therefore, Chef will buy the 6^{th}6 
+th
+  laptop.
+
+Test case 3: Laptops 22, 33 have the maximum number of recommendations. Therefore, Chef will still be CONFUSED.
+
+Test case 4: Laptops 77, 88 have the maximum number of recommendations. Therefore, Chef will still be CONFUSED.
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int i=1;i<=t;i++){
+		    int n=sc.nextInt();
+		    int[] arr=new int[n];
+		    
+		    for(int j=0;j<n;j++){
+		        int arr_num=sc.nextInt();
+		        arr[j]=arr_num;
+		    }
+		    int[] brr=new int[11];
+		    for(int j=1;j<=10;j++){
+		        int count=0;
+		        for(int k=0;k<n;k++){
+		            if(j==arr[k]){
+		                count++;
+		            }
+		        }
+		        brr[j]=count;
+		    }
+		    int max1=0;
+		    int index=0;
+		    for(int j=0;j<11;j++){
+		       if(brr[j]>max1){
+		           max1=brr[j];
+		           index=j;
+		       } 
+		    }
+		   
+		    brr[index]=0;
+		    int max2=0;
+		    for(int j=0;j<11;j++){
+		       if(brr[j]>max2){
+		           max2=brr[j];
+		          
+		       } 
+		    }
+		    if(max1==max2){
+		        System.out.println("Confused");
+		    }else{
+		        System.out.println(index);
+		    }
+		    
+		    
+		}
+	}
+}
