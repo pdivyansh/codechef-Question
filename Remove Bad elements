@@ -1,0 +1,172 @@
+Problem
+Chef has an array AA of length NN.
+
+In one operation, Chef can remove any one element from the array.
+
+Determine the minimum number of operations required to make all the elements same.
+
+Input Format
+The first line of input will contain a single integer TT, denoting the number of test cases.
+Each test case consists of multiple lines of input.
+The first line of each test case contains a single integer NN —the length of Array AA.
+Next line contains NN space-separated integers A_1, A_2, A_3,...., A_N denoting the array A.
+Output Format
+For each test case, output the minimum number of operations required to make all the elements same.
+
+Constraints
+1≤T≤4000
+1≤N≤10^5
+1≤A_i≤N
+Sum of N over all test cases do not exceed 3.10^5
+
+Sample 1:
+Input
+4
+3
+3 3 3
+6
+1 3 2 1 2 2
+4
+1 2 1 2
+5
+1 3 2 4 5
+Output
+0
+3
+2
+4
+Explanation:
+Test case 11: All the elements are already same. Thus we need to perform zero operations.
+
+Test case 22: We remove the elements A_1, A_2 and A_4 using three operations. The array becomes [2, 2, 2][2,2,2] where all elements are same.
+
+Test case 33: We remove the elements A_1 and A_3 using two operations. The array becomes [2, 2][2,2] where all elements are same.
+
+Test case 44: We remove the elements A_1, A_2, A_3 and A_4 using four operations. The array becomes [5][5].
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t>0){
+		    int n=sc.nextInt();
+		    int arr[]=new int[n];
+		    for(int i=0;i<n;i++){
+		       arr[i]=sc.nextInt();
+		       
+		    }
+		   //first soultion
+		  ////  int max1=arr[0];
+		  ////  for(int i=1;i<n;i++){
+		  ////    if(arr[i]>max1){
+		  ////        max1=arr[i];
+		  ////    }  
+		  ////  }
+		  //  int brr[]=new int[n+1];
+		  //  for(int i=0;i<n;i++){
+		  //      int count=1;
+		  //      if(arr[i]==0){
+		  //          continue;
+		  //      }
+		  //      for(int j=i+1;j<n;j++){
+		  //         if(arr[i]==arr[j]){
+		  //             count++;
+		  //             arr[j]=0;
+		  //         } 
+		  //      }
+		  //      brr[arr[i]]=count;
+		  //      arr[i]=0;
+		        
+		  //  }
+		    
+		  ////  for(int i=0;i<n+1;i++){
+		  ////      System.out.println(brr[i]);
+		  ////  }
+		  //  int max=brr[0];
+		  //  int index=0;
+		  //  for(int i=1;i<brr.length;i++){
+		  //      if(brr[i]>=max){
+		  //          max=brr[i];
+		  //          index=i;
+		  //      }
+		        
+		  //  }
+		  // // System.out.println(max+" "+index);
+		  //  int sum=0;
+		  //  int result=0;
+		  //  for(int i=0;i<brr.length;i++){
+		  //      if(i!=index){
+		  //          sum=sum+brr[i];
+		  //      }
+		  //      if(brr[i]==0){
+		  //          result++;
+		  //      }
+		        
+		  //  }
+		  //  if(result==n){
+		  //      sum=0;
+		  //  }
+
+    //         // int sum=0;
+    //         // int result=0;
+    //         // Arrays.sort(brr);
+    //         // for(int i=0;i<brr.length-1;i++){
+                
+    //         //     sum=sum+brr[i];
+    //         //     if(brr[i]==0){
+    //         //         result++;
+    //         //     }
+    //         // }
+    //         // if(result==brr.length-1){
+    //         //   sum=0;  
+    //         // }
+		  //  System.out.println(sum);
+		    
+        
+        //second solution
+		   ArrayList<Integer> brr=new ArrayList<Integer>();
+		   for(int i=0;i<n;i++){
+		       brr.add(arr[i]);
+		   }
+		  // System.out.println(brr);
+		   
+		   int freq=0;
+		   int max=0;
+		   int index=0;
+		   int element=0;
+		   for(int i=0;i<brr.size();i++){
+		      freq=Collections.frequency(brr,brr.get(i)); 
+		      if(freq>max){
+		          max=freq;
+		          index=i;
+		          element=brr.get(i);
+		      }
+		   }
+		   int sum=0;
+		   for(int i=0;i<brr.size();i++){
+		       if(brr.get(i)!=element){
+		           sum=sum+1;
+		       }
+		   }
+		   System.out.println(sum);
+		    t--;
+		}
+	}
+}
