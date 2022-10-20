@@ -1,0 +1,81 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t>0){
+		    int n=sc.nextInt();
+		    int arr[]=new int[n];
+		    
+		    for(int i=0;i<n;i++){
+		       arr[i]=sc.nextInt();
+		    }
+		    int count=0;
+		    
+		    for(int j=0;j<n;j++){
+		      for(int k=j+1;k<n;k++){
+		       int min,max;
+		       int gcd=1;
+		       if(arr[j]==arr[k]){
+		           count++;
+		           continue;
+		       }
+		       if(arr[j]>arr[k]){
+		          min=arr[k];
+		          max=arr[j];
+		       }
+		       else{
+		          min=arr[j];
+		          max=arr[k];
+		       }
+		          
+		       for(int l=2;l<=min;l++) {
+		           if(arr[j]%l==0 && arr[k]%l==0){
+		               gcd=l;
+		           }
+		        }
+		      int lcm=1; 
+		      int a=arr[j];
+		      int b=arr[k];
+		      int m=2;
+		      while(m<=max){
+		         
+                if(a%m==0 && b%m==0){
+                  a=a/m;
+                  b=b/m;
+                  lcm=lcm*m;
+                }
+                else if(a%m==0){
+                  a=a/m;
+                  lcm=lcm*m;
+                }else if(b%m==0){
+                  b=b/m;
+                  lcm=lcm*m;
+                }else{
+                  if(a==1 && b==1)
+                     break;
+                    
+                  m=m+1;
+                }
+              }
+		      
+		        
+		       if(gcd==lcm){
+		           count++;
+		       }
+		      }
+		    }
+		    System.out.println(count);
+		    t--;
+		}
+	}
+}
