@@ -1,0 +1,74 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+    public static int factorial(int x){
+        int mul=1;
+        for(int i=1;i<=x;i++){
+            mul=mul*i;
+        }
+        return mul;
+    }
+    public static int combination(int n,int x){
+        int comb=factorial(n)/(factorial(x)*factorial(n-x));
+        return comb;
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int x=sc.nextInt();
+		int n=sc.nextInt();
+		
+		String srr[]=new String[n];
+		for(int i=0;i<n;i++){
+		    srr[i]=sc.next();
+		}
+	
+		int sum=0;
+		for(int i=1;i<=n;i++){
+		    int start=1;
+		    int end=54;
+		    for(int j=1;j<=9;j++){
+		        int count=0;
+		        // for start
+		       for(int k=1;k<=4;k++){
+		           if(srr[i-1].charAt(start-1)=='0'){
+		               count++;
+		           }else{
+		               
+		           }
+		           start++;
+		       }
+		       // for end
+		       for(int l=1;l<=2;l++){
+		           if(srr[i-1].charAt(end-1)=='0'){
+		               count++;
+		           }else{
+		               
+		           }
+		           end--;
+		      }
+		    
+		      if(count>=x){
+		          int comb=combination(count,x);
+		          sum=sum+comb;
+		         // System.out.println(count);
+		         // System.out.println(comb);
+		
+		
+		       }
+		      
+		    }
+		   
+		
+		}
+     	System.out.println(sum);
+		
+	}
+}
