@@ -1,0 +1,73 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+    public static int factorial(int x){
+        int mul=1;
+        for(int i=1;i<=x;i++){
+           mul=mul*i; 
+            
+        }
+        return mul;
+    }
+    public static int combination(int n,int x){
+       
+        int comb=factorial(n)/(factorial(x)*factorial(n-x));
+        return comb;
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		
+		while(t>0){
+		    int arr[]=new int[11];
+		    int n=11;
+		    for(int i=0;i<n;i++){
+		        arr[i]=sc.nextInt();
+		    }
+		    
+		    int k=sc.nextInt();
+		    for(int i=0;i<n-1;i++){
+		        for(int j=0;j<n-1-i;j++){
+		            if(arr[j]>arr[j+1]){
+		                int temp=arr[j];
+		                arr[j]=arr[j+1];
+		                arr[j+1]=temp;
+		            }
+		        }
+		    }
+		    //int brr[]=new int[k];
+		    //int l=0;
+		  //  for(int i=n-1;i>=n-k;i--){
+		  //     brr[l]=arr[i];
+		  //     l++;
+		  //  }
+		    int min_k=arr[n-k];
+		    int min_k_arr_count=0;
+		    for(int i=0;i<n;i++){
+		       if(arr[i]==min_k){
+		           min_k_arr_count++;
+		       }
+		    }
+		    int min_k_count=0;
+		    for(int i=n-k;i<n;i++){
+		        if(arr[i]==min_k){
+		            min_k_count++;
+		        }
+		    }
+		   // System.out.println(min_k_arr_count);
+		   // System.out.println(min_k_count);
+		    
+          System.out.println(combination(min_k_arr_count,min_k_count));
+		    
+		    t--;
+		}
+	}
+}
