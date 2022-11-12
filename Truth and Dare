@@ -1,0 +1,75 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t>0){
+		    int tr=sc.nextInt();
+		    int tr_arr[]=new int[tr];
+		    for(int i=0;i<tr;i++){
+		        tr_arr[i]=sc.nextInt();
+		    }
+		    
+		    int dr=sc.nextInt();
+		    int dr_arr[]=new int[dr];
+		    for(int i=0;i<dr;i++){
+		        dr_arr[i]=sc.nextInt();
+		    }
+		    
+		    int ts=sc.nextInt();
+		    int ts_arr[]=new int[ts];
+		    for(int i=0;i<ts;i++){
+		        ts_arr[i]=sc.nextInt();
+		    }
+		    
+		    int ds=sc.nextInt();
+		    int ds_arr[]=new int[ds];
+		    for(int i=0;i<ds;i++){
+		        ds_arr[i]=sc.nextInt();
+		    }
+		    boolean truth=true;
+		    for(int i=0;i<ts;i++){
+		        int count=0;
+		        for(int j=0;j<tr;j++){
+		            if(ts_arr[i]!=tr_arr[j]){
+		                count++;
+		            }
+		        }
+		        if(count==tr){
+		            truth=false;
+		            break;
+		        }
+		    }
+		    
+		    boolean dare=true;
+		    for(int i=0;i<ds;i++){
+		        int count=0;
+		        for(int j=0;j<dr;j++){
+		            if(ds_arr[i]!=dr_arr[j]){
+		                count++;
+		            }
+		        }
+		        if(count==dr){
+		            dare=false;
+		            break;
+		        }
+		    }
+		    if(truth && dare){
+		        System.out.println("yes");
+		    }else{
+		        System.out.println("no");
+		    }
+		    
+		    t--;
+		}
+	}
+}
